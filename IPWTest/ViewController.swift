@@ -19,13 +19,15 @@ class ViewController: UIViewController {
         collectionView.register(InServiceCollectionViewCell.self, forCellWithReuseIdentifier: InServiceCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = "In Service"
+        navigationController?.navigationBar.prefersLargeTitles = true
         subviews()
         constraints()
         delegates()
@@ -41,26 +43,49 @@ class ViewController: UIViewController {
     }
     
     private func constraints() {
-        NSLayoutConstraint.activate([
-            testCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            testCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            testCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            testCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
-        ])
+        testCollectionView.layout(top: view.safeAreaLayoutGuide.topAnchor,
+                                  bottom: view.bottomAnchor,
+                                  leading: view.leadingAnchor,
+                                  trailing: view.trailingAnchor,
+                                  paddingTop: 8,
+                                  paddingLeading: 8,
+                                  paddingTrailing: -8)
     }
-
+    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        let data = InServiceCollectionViewCell()
+        return data.serviceArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InServiceCollectionViewCell.identifier, for: indexPath) as! InServiceCollectionViewCell
-        cell.backgroundColor = .red
+        let data = cell.serviceArray[indexPath.row]
+        cell.companyNameLabel.text = data.companyName
+        cell.orderNumberLabel.text = data.orderNumber
+        cell.calendarDate.text = data.orderDate
+        
+        
+        cell.contentView.layer.cornerRadius = 10.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true
+        
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        cell.layer.shadowRadius = 5.0
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         return cell
     }
-    
-    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
 }
