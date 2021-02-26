@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Painless",
+        "repositoryURL": "https://github.com/Litebox-Avenue/PainlessUI.git",
+        "state": {
+          "branch": "main",
+          "revision": "9abf693e166efb9b939aba1d76f6e56286151ed1",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		078D16B0A57C573A4F2EBAFB /* Pods_IPWTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD493339EFA1E30383C116 /* Pods_IPWTest.framework */; };
+		1A0D723625E8D434007D7479 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0D723525E8D434007D7479 /* SwiftPackageProductDependency */; };
 		1A42E0DD25E7A1B20000C466 /* InServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42E0DC25E7A1B20000C466 /* InServiceCollectionViewCell.swift */; };
 		1A97F62F25E826BC0062EE30 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A97F62E25E826BC0062EE30 /* Service.swift */; };
 		1AE117E425E781830019CE81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE117E325E781830019CE81 /* AppDelegate.swift */; };
@@ -18,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0FF18D2F255113C44BFDB7C1 /* Pods-IPWTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPWTest.release.xcconfig"; path = "Target Support Files/Pods-IPWTest/Pods-IPWTest.release.xcconfig"; sourceTree = "<group>"; };
 		1A42E0DC25E7A1B20000C466 /* InServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A97F62E25E826BC0062EE30 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1AE117E025E781830019CE81 /* IPWTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPWTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,8 +27,6 @@
 		1AE117EC25E781860019CE81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AE117EF25E781860019CE81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AE117F125E781860019CE81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3248ED58E150AEFAB190D046 /* Pods-IPWTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPWTest.debug.xcconfig"; path = "Target Support Files/Pods-IPWTest/Pods-IPWTest.debug.xcconfig"; sourceTree = "<group>"; };
-		69DD493339EFA1E30383C116 /* Pods_IPWTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IPWTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078D16B0A57C573A4F2EBAFB /* Pods_IPWTest.framework in Frameworks */,
+				1A0D723625E8D434007D7479 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +59,6 @@
 				1AE117E225E781830019CE81 /* IPWTest */,
 				1AE117E125E781830019CE81 /* Products */,
 				1DB02BF7593F3EE455A77DEF /* Pods */,
-				1CF3A4E979E8D75CB5485443 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,21 +81,10 @@
 			path = IPWTest;
 			sourceTree = "<group>";
 		};
-		1CF3A4E979E8D75CB5485443 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				69DD493339EFA1E30383C116 /* Pods_IPWTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1DB02BF7593F3EE455A77DEF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3248ED58E150AEFAB190D046 /* Pods-IPWTest.debug.xcconfig */,
-				0FF18D2F255113C44BFDB7C1 /* Pods-IPWTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,17 +95,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AE117F425E781860019CE81 /* Build configuration list for PBXNativeTarget "IPWTest" */;
 			buildPhases = (
-				4A2B122BB2B3BC1504AEA2FD /* [CP] Check Pods Manifest.lock */,
 				1AE117DC25E781830019CE81 /* Sources */,
 				1AE117DD25E781830019CE81 /* Frameworks */,
 				1AE117DE25E781830019CE81 /* Resources */,
-				2F3B8F1D58CE0207AB880CBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = IPWTest;
+			packageProductDependencies = (
+				1A0D723525E8D434007D7479 /* SwiftPackageProductDependency */,
+			);
 			productName = IPWTest;
 			productReference = 1AE117E025E781830019CE81 /* IPWTest.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 1AE117D725E781820019CE81;
+			packageReferences = (
+				1A0D723425E8D434007D7479 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 1AE117E125E781830019CE81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,48 +157,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2F3B8F1D58CE0207AB880CBF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IPWTest/Pods-IPWTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IPWTest/Pods-IPWTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IPWTest/Pods-IPWTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4A2B122BB2B3BC1504AEA2FD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IPWTest-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AE117DC25E781830019CE81 /* Sources */ = {
@@ -356,7 +303,6 @@
 		};
 		1AE117F525E781860019CE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3248ED58E150AEFAB190D046 /* Pods-IPWTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,7 +322,6 @@
 		};
 		1AE117F625E781860019CE81 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FF18D2F255113C44BFDB7C1 /* Pods-IPWTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -416,6 +361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A0D723425E8D434007D7479 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Litebox-Avenue/PainlessUI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A0D723525E8D434007D7479 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0D723425E8D434007D7479 /* RemoteSwiftPackageReference */;
+			productName = Painless;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1AE117D825E781820019CE81 /* Project object */;
 }
