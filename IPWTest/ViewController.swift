@@ -9,10 +9,44 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let navBar: UINavigationBar = {
+        let navBar = UINavigationBar()
+        navBar.backgroundColor = .black
+        return navBar
+    }()
+    
+    let menuButton: UIButton = {
+        let menuButton = UIButton()
+        let menuImageView = UIImageView()
+        menuImageView.image = UIImage(named: "menu")?.withTintColor(.white)
+        menuButton.imageView?.contentMode = .scaleAspectFit
+        menuButton.imageView?.setDimensions(width: 24, height: 24)
+        menuButton.setImage(menuImageView.image, for: .normal)
+        return menuButton
+    }()
+    
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "logo")
+        imageView.setDimensions(width: 150, height: 70)
+        return imageView
+    }()
+    
+    let exitButton: UIButton = {
+        let exitButton = UIButton()
+        let exitImageView = UIImageView()
+        exitImageView.image = UIImage(named: "exit")?.withTintColor(UIColor(red: 4/255, green: 192/255, blue: 255/255, alpha: 1.0))
+        exitButton.imageView?.contentMode = .scaleAspectFit
+        exitButton.imageView?.setDimensions(width: 24, height: 24)
+        exitButton.setImage(exitImageView.image, for: .normal)
+        return exitButton
+    }()
+    
     let testCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 327, height: 192)
+        layout.itemSize = CGSize(width: 327, height: 210)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,11 +60,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "In Service"
-        navigationController?.navigationBar.prefersLargeTitles = true
         subviews()
         constraints()
         delegates()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     private func delegates() {
@@ -39,17 +75,38 @@ class ViewController: UIViewController {
     }
     
     private func subviews() {
+        view.addSubview(navBar)
+        view.addSubview(menuButton)
+        view.addSubview(logoImageView)
+        view.addSubview(exitButton)
         view.addSubview(testCollectionView)
     }
     
     private func constraints() {
-        testCollectionView.layout(top: view.safeAreaLayoutGuide.topAnchor,
+        navBar.layout(top: view.topAnchor,
+                      leading: view.leadingAnchor,
+                      trailing: view.trailingAnchor)
+        navBar.setDimensions(width: view.frame.width, height: 120)
+        
+        logoImageView.centerX(inView: navBar,
+                              topAnchor: navBar.safeAreaLayoutGuide.topAnchor,
+                              paddingTop: 0)
+        
+        menuButton.layout(top: navBar.safeAreaLayoutGuide.topAnchor,
+                          leading: navBar.leadingAnchor,
+                          paddingLeading: 8)
+        menuButton.centerY(inView: logoImageView)
+        
+        exitButton.layout(top: navBar.safeAreaLayoutGuide.topAnchor,
+                          trailing: navBar.trailingAnchor,
+                          paddingTrailing: -8)
+        exitButton.centerY(inView: logoImageView)
+        
+        
+        testCollectionView.layout(top: navBar.bottomAnchor,
                                   bottom: view.bottomAnchor,
                                   leading: view.leadingAnchor,
-                                  trailing: view.trailingAnchor,
-                                  paddingTop: 8,
-                                  paddingLeading: 8,
-                                  paddingTrailing: -8)
+                                  trailing: view.trailingAnchor)
     }
     
 }

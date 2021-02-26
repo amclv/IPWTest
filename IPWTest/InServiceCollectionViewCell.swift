@@ -112,7 +112,7 @@ class InServiceCollectionViewCell: UICollectionViewCell {
     
     let dropDownBackground: UIView = {
         let background = UIView()
-        background.layer.borderColor = UIColor.black.cgColor
+        background.layer.borderColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0).cgColor
         background.layer.borderWidth = 1.0
         background.layer.cornerRadius = 5
         background.setDimensions(width: 300, height: 47)
@@ -139,6 +139,61 @@ class InServiceCollectionViewCell: UICollectionViewCell {
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.alignment = .fill
+        return stack
+    }()
+    
+    // Button Section
+    let viewButton: UIButton = {
+        let button = UIButton()
+        let viewImage = UIImageView()
+        viewImage.image = UIImage(named: "view")?.withTintColor(UIColor(red: 4/255, green: 192/255, blue: 255/255, alpha: 1.0))
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.setDimensions(width: 20, height: 20)
+        button.setImage(viewImage.image, for: .normal)
+        
+        button.setTitle("View", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.centerY(inView: button.imageView!)
+        return button
+    }()
+    
+    let editButton: UIButton = {
+        let button = UIButton()
+        let editImage = UIImageView()
+        editImage.image = UIImage(named: "edit")?.withTintColor(UIColor(red: 4/255, green: 192/255, blue: 255/255, alpha: 1.0))
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.setDimensions(width: 20, height: 20)
+        button.setImage(editImage.image, for: .normal)
+        
+        button.setTitle("Edit", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.centerY(inView: button.imageView!)
+        return button
+    }()
+    
+    let serviceSheetButton: UIButton = {
+        let button = UIButton()
+        let serviceImage = UIImageView()
+        serviceImage.image = UIImage(named: "serviceSheet")?.withTintColor(UIColor(red: 4/255, green: 192/255, blue: 255/255, alpha: 1.0))
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.setDimensions(width: 20, height: 20)
+        button.setImage(serviceImage.image, for: .normal)
+        
+        button.setTitle("Service Sheet", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.centerY(inView: button.imageView!)
+        return button
+    }()
+    
+    let buttonHStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .equalSpacing
+        stack.spacing = 8
         return stack
     }()
     
@@ -210,7 +265,7 @@ extension InServiceCollectionViewCell {
         dropDownBackground.layout(top: statusLabel.bottomAnchor,
                                   leading: statusLabel.leadingAnchor,
                                   trailing: statusLabel.trailingAnchor,
-                                  paddingTop: 8)
+                                  paddingTop: 16)
         
         dropMenuHStack.addArrangedSubview(dropDownMenuLabel)
         dropMenuHStack.addArrangedSubview(dropDownImageView)
@@ -220,5 +275,37 @@ extension InServiceCollectionViewCell {
                               trailing: dropDownBackground.trailingAnchor,
                               paddingLeading: 20,
                               paddingTrailing: -20)
+        
+        
+        buttonHStack.addArrangedSubview(viewButton)
+        buttonHStack.addArrangedSubview(editButton)
+        buttonHStack.addArrangedSubview(serviceSheetButton)
+        buttonHStack.addVerticalSeparators(color: UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0))
+        addSubview(buttonHStack)
+        buttonHStack.layout(top: dropDownBackground.bottomAnchor,
+                            bottom: self.bottomAnchor,
+                            leading: dropDownBackground.leadingAnchor,
+                            trailing: dropDownBackground.trailingAnchor,
+                            paddingTop: 8,
+                            paddingBottom: -8)
+    }
+}
+
+extension UIStackView {
+    func addVerticalSeparators(color : UIColor) {
+        var i = self.arrangedSubviews.count
+        while i > 1 {
+            let separator = verticalCreateSeparator(color: color)
+            insertArrangedSubview(separator, at: i-1)   // (i-1) for centers only
+            separator.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
+            i -= 1
+        }
+    }
+
+    private func verticalCreateSeparator(color : UIColor) -> UIView {
+        let separator = UIView()
+        separator.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        separator.backgroundColor = color
+        return separator
     }
 }
